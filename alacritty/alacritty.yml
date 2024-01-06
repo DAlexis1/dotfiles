@@ -42,7 +42,7 @@ window:
   #dynamic_padding: false
 
   # Window decorations
-  #
+  decorations: none
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar

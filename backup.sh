@@ -12,17 +12,19 @@ fi
 
 # delete old files
 rm -rf nvim
-rm -rf zshrc
+rm zshrc
 rm -rf alacritty
+rm -rf i3conf
 
 # copy files 
 cp -r ~/.config/nvim nvim
 cp -r ~/.config/alacritty alacritty
 cp ~/.zshrc zshrc
+cp -rf ~/.config/i3 i3conf
 
 # Check git status
 gs="$(git status | grep -i "modified")"
-# echo "${gs}"
+ echo "${gs}"
 
 # If there is a new change
 if [[ $gs == *"modified"* ]]; then
