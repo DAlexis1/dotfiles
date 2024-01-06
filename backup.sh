@@ -20,7 +20,7 @@ rm -rf i3conf
 cp -r ~/.config/nvim nvim
 cp -r ~/.config/alacritty alacritty
 cp ~/.zshrc zshrc
-cp -rf ~/.config/i3 i3conf
+cp -r ~/.config/i3 i3conf
 
 # Check git status
 gs="$(git status | grep -i "modified")"
