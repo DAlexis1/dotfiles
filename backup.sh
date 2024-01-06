@@ -33,6 +33,6 @@ fi
 
 
 # push to Github
-git add -u .;
+git add -A;
 git commit -m "New backup `date +'%Y-%m-%d %H:%M:%S'`";
 git push origin master
