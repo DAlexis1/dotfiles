@@ -15,12 +15,14 @@ rm -rf nvim
 rm zshrc
 rm -rf alacritty
 rm -rf i3conf
+rm -rf Scripts 
 
 # copy files 
 cp -r ~/.config/nvim nvim
 cp -r ~/.config/alacritty alacritty
 cp ~/.zshrc zshrc
 cp -r ~/.config/i3 i3conf
+cp -r ~/Scripts Scripts
 
 # Check git status
 gs="$(git status | grep -i "modified")"

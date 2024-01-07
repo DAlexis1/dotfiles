@@ -29,7 +29,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock/better_lock.sh --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- better_lock.sh --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -121,16 +121,16 @@ bindsym $mod+q focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 "1: Main󰣇 "
+set $ws2 "2:󰙯 "
+set $ws3 "3:󰗃 "
+set $ws4 "4: "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:vpn"
 
 # switch to workspace
 bindsym $mod+ampersand workspace number $ws1
@@ -190,13 +190,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Ctrl+d exec "flatpak run com.discordapp.Discord"
+bindsym $mod+Ctrl+y exec "freetube"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         #status_command i3status -c ~/.config/i3/i3status.conf
-        status_command i3blocks -c ~/.config/i3/i3blocks/i3blocks.conf
-        mode hide
-        hidden_state hide
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        #mode hide
+        #hidden_state hide
         tray_output none
         workspace_buttons yes
         strip_workspace_numbers yes
@@ -217,9 +220,18 @@ for_window [class=".*"] border pixel 1
 
 gaps outer 3
 gaps inner 7
-
+ 
 # Screenshot keybind
 bindsym Print exec --no-startup-id flameshot gui 
 
 # autotiling enabled : install with yay autotiling 
 exec_always --no-startup-id autotiling
+
+#enable the network manager to open in floating mode
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Power Manager"] floating enable
+
+assign [class="discord"] 2:󰙯 
+assign [class="FreeTube"] 3:󰗃 
+assign [class="thunderbird"] 4: 
+assign [class="Protonvpn-app"] 10:vpn
