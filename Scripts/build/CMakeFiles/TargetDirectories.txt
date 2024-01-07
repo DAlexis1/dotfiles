@@ -1,0 +1,3 @@
+/home/sandor/Scripts/build/CMakeFiles/power_window.dir
+/home/sandor/Scripts/build/CMakeFiles/edit_cache.dir
+/home/sandor/Scripts/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/power_window.dir/power_window.c.o -o power_window  -lraylib 

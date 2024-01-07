@@ -206,7 +206,7 @@ bar {
 }
 
 # Add binding to lock session 
-bindsym $mod+x exec --no-startup-id ~/.config/i3/lock/better_lock.sh
+bindsym $mod+x exec --no-startup-id better_lock.sh
 
 # apply config for background and color at start
 exec --no-startup-id picom -b

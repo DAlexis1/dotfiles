@@ -39,26 +39,27 @@ int main(int argc, char **argv) {
                (Vector2){(int)reboot_button.x + 7, (int)reboot_button.y + 10},
                15, 0, ORANGE);
     DrawTextEx(
-        fontTTF, "⏾",
-        (Vector2){(int)hibernate_button.x + 25, (int)hibernate_button.y + 2},
-        25, 2, ORANGE);
+        fontTTF, "Quit",
+        (Vector2){(int)hibernate_button.x + 15, (int)hibernate_button.y + 10},
+        15, 2, ORANGE);
     EndDrawing();
 
     if (CheckCollisionPointRec(GetMousePosition(), power_off_button) &&
         IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
       UnloadFont(fontTTF);
-      exit(1);
+      return 1;
       // exit(9000);
     }
     if (CheckCollisionPointRec(GetMousePosition(), reboot_button) &&
         IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
       UnloadFont(fontTTF);
-      exit(2);
+      return 2;
     }
     if (CheckCollisionPointRec(GetMousePosition(), hibernate_button) &&
         IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
       UnloadFont(fontTTF);
-      exit(3);
+      return 0;
     }
   }
+  return 0;
 }

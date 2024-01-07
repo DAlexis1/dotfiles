@@ -1,15 +1,14 @@
 #!/bin/bash
 
-WIDTH=$(xrandr | fgrep '*' | awk '{print $1}' | tr "x" " " | awk '{print $1}')
-HEIGTH=$(xrandr | fgrep '*' | awk '{print $1}' | tr "x" " " | awk '{print $2}')
+WIDTH=$(xrandr | grep -F '*' | awk '{print $1}' | tr "x" " " | awk '{print $1}')
+HEIGTH=$(xrandr | grep -F '*' | awk '{print $1}' | tr "x" " " | awk '{print $2}')
 
 power_window $WIDTH $HEIGTH
-if [[ $? = "1" ]]; then
+exit_code=$?
+if [[ $exit_code -eq 1 ]]; then
   poweroff
-elif [[ $? = "2" ]]; then
+elif [[ $exit_code -eq 2 ]]; then
   reboot
-elif [[ $? = "3" ]]; then
-  systemctl suspend
 fi
 
 exit 0
