@@ -1,9 +1,9 @@
 #!/bin/bash
 
-WIDTH=$(xrandr | grep -F '*' | awk '{print $1}' | tr "x" " " | awk '{print $1}')
-HEIGTH=$(xrandr | grep -F '*' | awk '{print $1}' | tr "x" " " | awk '{print $2}')
+WIDTH=$(xwininfo -root | grep Width | awk '{print $2}')
+HEIGHT=$(xwininfo -root | grep Height | awk '{print $2}')
 
-power_window $WIDTH $HEIGTH
+power_window "${WIDTH}" "${HEIGHT}"
 exit_code=$?
 if [[ $exit_code -eq 1 ]]; then
   poweroff

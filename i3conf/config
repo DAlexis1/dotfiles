@@ -129,7 +129,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9: "
 set $ws10 "10:vpn"
 
 # switch to workspace
@@ -235,3 +235,6 @@ assign [class="discord"] 2:󰙯
 assign [class="FreeTube"] 3:󰗃 
 assign [class="thunderbird"] 4: 
 assign [class="Protonvpn-app"] 10:vpn
+
+workspace $ws9 output HDMI-A-0
+assign [class="Lutris"] $ws9

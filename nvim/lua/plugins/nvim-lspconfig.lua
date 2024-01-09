@@ -71,6 +71,8 @@ local config = function()
 		},
 	})
 
+	lspconfig.bashls.setup({})
+
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	-- local flake8 = require("efmls-configs.linters.flake8")
@@ -79,12 +81,15 @@ local config = function()
 	local autopep8 = require("efmls-configs.formatters.autopep8")
 	local cpplint = require("efmls-configs.linters.cpplint")
 	local clangformat = require("efmls-configs.formatters.clang_format")
+	local shfmt = require("efmls-configs.formatters.shfmt")
+	local shellcheck = require("efmls-configs.linters.shellcheck")
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
 			"python",
 			"c",
 			"cpp",
+			"sh",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -100,6 +105,7 @@ local config = function()
 				python = { pylint, autopep8 },
 				c = { clangformat, cpplint },
 				cpp = { clangformat, cpplint },
+				sh = { shfmt, shellcheck },
 			},
 		},
 	})

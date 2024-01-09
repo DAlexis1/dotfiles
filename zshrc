@@ -113,5 +113,9 @@ fi
 alias anytype="~/Applications/Anytype_85f0e5578476efa40c54e97aad9f49ea"
 alias myfetch="fastfetch --color-keys red --logo-color-1 yellow --logo-color-2 green --color-title green --percent-type 1 --file Images/fastfetch-logo"
 
+unset HISTFILE
+unset HISTSIZE
+unset SAVEHIST
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

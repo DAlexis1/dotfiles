@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
   Rectangle reboot_button = {80., 30., 60., 30.};
   Rectangle hibernate_button = {150., 30., 60., 30.};
   InitWindow(220, 100, "Power Manager");
-  SetWindowPosition(atoi(argv[1]) - 220, atoi(argv[2]) - 140);
+  SetWindowPosition(atoi(argv[1]) - 240, atoi(argv[2]) - 140);
   // SetWindowPosition(0, 0);
   SetWindowOpacity(0.7);
   Font fontTTF = LoadFontEx("MononokiNerdFontMono-Regular.ttf", 35, 0, 10000);
