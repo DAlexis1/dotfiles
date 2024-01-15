@@ -13,6 +13,8 @@ cd /home/$user_name || exit 0
 
 git clone https://github.com/DAlexis1/dotfiles.git
 
+mkdir /home/$name_user/Scripts
+mkdir /home/$name_user/Images
 #copy to the right place the cloned files that we can already copy
 cp -r dotfiles/Scripts Scripts
 rm Scripts/MononokiNerdFontMono-Regular.ttf
@@ -107,4 +109,7 @@ cp dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
 chown -R $name_user:$name_user /home/$name_user/.config
 chown -R $name_user:$name_user /home/$name_user/AppImage
-chown -R $name_user:$name_user /home/$name_user/.zshrc
+chown $name_user:$name_user /home/$name_user/.zshrc
+
+chown -R $name_user:$name_user /home/$name_user/Image
+chown -R $name_user:$name_user /home/$name_user/Scripts
