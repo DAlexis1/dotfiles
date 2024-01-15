@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$USER" = "root" ]]; then
-	echo "Don't run this program as root it won't work"
+	echo "Don't run this program as root : it won't work"
 	exit 0
 fi
 
@@ -16,7 +16,7 @@ sudo mkdir /usr/share/backgrounds
 sudo cp /home/$user/dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
 echo "[*] Installing programs from main repo"
-sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter
+sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser
 
 echo "[*] Installing yay"
 git clone https://aur.archlinux.org/yay.git
@@ -26,7 +26,7 @@ makepkg -siCc --noconfirm
 echo "[*] Installing programs from AUR"
 yay -S i3lock-color
 yay -S autotiling
-yay -S librewolf
+#yay -S librewolf
 yay -S flameshot
 yay -S onlyoffice-bin
 
@@ -50,7 +50,10 @@ echo "[*] Get oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "[*] Get powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo "[*] Get syntax highlighting"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "[*] Setting zsh parameters"
 rm ~/.zshrc
@@ -62,7 +65,7 @@ mkdir ~/Scripts
 mkdir ~/AppImage
 
 echo "[*] Copying files from github dotfiles"
-cp -R ~/dotfiles/Scripts ~/Scripts
+cp -R ~/dotfiles/Scripts/* ~/Scripts/
 cp ~/dotfiles/background ~/Images/dragon-girl.jpg
 rm -rf .config/i3/
 cp -R ~/dotfiles/i3-conf ~/.config/i3
@@ -84,4 +87,5 @@ if [[ "$AcceptScriptsPath" = "y" ]]; then
 fi
 
 echo "[*] End of auto-settings"
+echo "[Reboot to apply changes]"
 exit 0
