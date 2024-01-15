@@ -46,7 +46,7 @@ chmod +x install.sh
 cd /home/$user_name || exit 0
 # Install yay to install easily the packages
 git clone https://aur.archlinux.org/yay.git /home/$name_user/yay
-chown -R $name_user:$name_user yay
+chown -R $name_user:$name_user /home/$name_user/yay
 cd /home/$name_user/yay || exit 0
 pacman -S --needed base-devel
 su -c "makepkg -si" "$name_user"
@@ -108,4 +108,3 @@ cp dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 chown -R $name_user:$name_user /home/$name_user/.config
 chown -R $name_user:$name_user /home/$name_user/AppImage
 chown -R $name_user:$name_user /home/$name_user/.zshrc
-
