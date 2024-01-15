@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#nothing is working right now
+exit 0
+
 name_user=$1
 
 if [[ ! $# -eq 1 ]]; then
