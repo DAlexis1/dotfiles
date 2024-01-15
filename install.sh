@@ -45,7 +45,7 @@ cd ~ || exit 0
 # Install yay to install easily the packages
 git clone https://aur.archlinux.org/yay.git
 cd yay || exit 0
-su -c makepkg -si "$name_user"
+su -c "makepkg -si" "$name_user"
 cd ~ || exit 0
 rm -rf yay
 
@@ -60,8 +60,8 @@ pacman -S zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr netwo
 
 pacman -Rns i3lock
 pacman -S i3lock-color
-su -c yay i3lock-color "$name_user"
-su -c yay autotiling "$name_user"
+su -c "yay i3lock-color" "$name_user"
+su -c "yay autotiling" "$name_user"
 
 cd ~ || exit 0
 # installation zsh + theme powerlevel10k
@@ -76,9 +76,9 @@ cd ~ || exit 0
 
 #install apps
 pacman -S Alacritty keepass thunderbird firefox flameshot neovim
-su -c yay librewolf "$name_user"
-su -c yay flameshot "$name_user"
-su -c yay onlyoffice-bin "$name_user"
+su -c "yay librewolf" "$name_user"
+su -c "yay flameshot" "$name_user"
+su -c "yay onlyoffice-bin" "$name_user"
 
 cd ~ || exit 0
 
