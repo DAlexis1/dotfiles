@@ -104,3 +104,8 @@ cp dotfiles/lightgreeter-conf/lightdm.conf /etc/lightdm.conf
 cp dotfiles/lightgreeter-conf/slick-greeter.conf /etc/slick-greeter.conf
 mkdir /usr/share/backgrounds
 cp dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
+
+chown -R $name_user:$name_user /home/$name_user/.config
+chown -R $name_user:$name_user /home/$name_user/AppImage
+chown -R $name_user:$name_user /home/$name_user/.zshrc
+
