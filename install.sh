@@ -8,6 +8,19 @@ if [[ ! $# -eq 1 ]]; then
 fi
 
 cd ~ || exit 0
+
+git clone https://github.com/DAlexis1/dotfiles.git
+
+#copy to the right place the cloned files that we can already copy
+cp -r dotfiles/Scripts Scripts
+rm Scripts/MononokiNerdFontMono-Regular.ttf
+cp -r dotfiles/alacritty ~/.config/
+cp -r dotfiles/i3conf ~/.config/i3
+rm .config/i3/MononokiNerdFontMono-Regular.ttf
+cp -r dotfiles/nvim ~/.config/
+cp dotfiles/background ~/Images/dragon-girl.jpg
+
+cd ~ || exit 0
 # get nerd-fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Mononoki.zip
 mkdir patched-fonts
@@ -19,7 +32,7 @@ rm LICENSE.txt
 
 cd ~ || exit 0
 # copy in the location where i need the font
-cp MononokiNerdFontMono-Regular.ttf Scripts/ || mkdir Scripts && cp MononokiNerdFontMono-Regular.ttf Scripts/
+cp MononokiNerdFontMono-Regular.ttf Scripts/
 cp MononokiNerdFontMono-Regular.ttf .config/i3/config
 
 cd ~ || exit 0
@@ -55,10 +68,9 @@ cd ~ || exit 0
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo "Do you want to set zshrc to default (Y/n) :"
-read -r Accept_powerlevel10k
-if [[ "$Accept_powerlevel10k" = "y" ]]; then
-	echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-fi
+
+rm ~/.zshrc
+cp ~/dotfiles/.zshrc .zshrc
 
 cd ~ || exit 0
 
@@ -82,12 +94,10 @@ fi
 cd ~ || exit 0
 
 # configure lightdm-slick-greeter
-# copy from github conf files and copy 
-# lightdm.conf from github into /etc/lightdm/lightdm-slick-greeter.conf
-# and copy slick-greeter.conf from github into /etc/lightdm/slick-greeter.conf
-# and copy dragon-girl.jpg background images into /usr/share/backgrounds/dragon-girl.jpg
 pacman -S lightdm-slick-greeter
 
-
-
-
+rm /etc/lightdm/lightdm.conf
+cp dotfiles/lightgreeter-conf/lightdm.conf /etc/lightdm.conf
+cp dotfiles/lightgreeter-conf/slick-greeter.conf /etc/slick-greeter.conf
+mkdir /usr/share/backgrounds
+cp dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
