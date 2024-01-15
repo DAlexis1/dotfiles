@@ -7,7 +7,7 @@ if [[ ! $# -eq 1 ]]; then
 	exit 1
 fi
 
-pacman -S --needed unzip git 
+pacman -S --needed unzip git
 
 cd /home/$user_name || exit 0
 
@@ -46,6 +46,7 @@ chmod +x install.sh
 cd /home/$user_name || exit 0
 # Install yay to install easily the packages
 git clone https://aur.archlinux.org/yay.git /home/$name_user/yay
+chown -R $name_user:$name_user yay
 cd /home/$name_user/yay || exit 0
 pacman -S --needed base-devel
 su -c "makepkg -si" "$name_user"
