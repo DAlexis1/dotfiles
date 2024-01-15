@@ -83,7 +83,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/sandor/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
@@ -110,8 +110,8 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias anytype="~/Applications/Anytype_85f0e5578476efa40c54e97aad9f49ea"
 alias myfetch="fastfetch --color-keys red --logo-color-1 yellow --logo-color-2 green --color-title green --percent-type 1 --file Images/fastfetch-logo"
+alias discord="~/App/Discord >/dev/null"
 
 unset HISTFILE
 unset HISTSIZE

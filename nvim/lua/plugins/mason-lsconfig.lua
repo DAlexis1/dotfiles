@@ -2,10 +2,10 @@ local opts = {
   ensure_installed = {
     "efm",
     "lua_ls",
-    "bashls",
     "clangd",
     "rust_analyzer",
     "pyright",
+    "bashls",
   },
   automatic_installation = true,
 }

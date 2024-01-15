@@ -10,19 +10,27 @@ else
   exit 1
 fi
 
-# delete old files
+rm install.sh
 rm -rf nvim
-rm zshrc
 rm -rf alacritty
-rm -rf i3conf
-rm -rf Scripts 
+rm background
+rm -rf lightgreeter-conf
+rm -rf i3-conf
+rm -rf Scripts
+rm .zshrc
 
-# copy files 
-cp -r ~/.config/nvim nvim
+mkdir lightgreeter-conf
+# get every files needed
+cp Bureau/reinstall.sh install.sh
 cp -r ~/.config/alacritty alacritty
-cp ~/.zshrc zshrc
-cp -r ~/.config/i3 i3conf
+cp -r ~/.config/nvim nvim
+cp -r ~/.config/i3 i3-conf
+cp ~/.zshrc .zshrc
+cp Images/dragon-girl.jpg background
+cp /etc/lightdm/lightdm.conf lightgreeter-conf/lightdm.conf
+cp /etc/lightdm/slick-greeter.conf lightgreeter-conf/slick-greeter.conf
 cp -r ~/Scripts Scripts
+
 
 # Check git status
 gs="$(git status | grep -i "modified")"
