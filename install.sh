@@ -19,7 +19,7 @@ echo "[*] Installing programs from main repo"
 sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter
 
 echo "[*] Installing yay"
-git clone https://aur.archlinux.org/yay.git ~
+git clone https://aur.archlinux.org/yay.git
 cd ~/yay || exit 0
 makepkg -siCc --noconfirm
 
