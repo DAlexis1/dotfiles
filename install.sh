@@ -7,6 +7,8 @@ if [[ ! $# -eq 1 ]]; then
 	exit 1
 fi
 
+pacman -S --needed unzip git 
+
 cd /home/$user_name || exit 0
 
 git clone https://github.com/DAlexis1/dotfiles.git
@@ -15,7 +17,7 @@ git clone https://github.com/DAlexis1/dotfiles.git
 cp -r dotfiles/Scripts Scripts
 rm Scripts/MononokiNerdFontMono-Regular.ttf
 cp -r dotfiles/alacritty /home/$user_name/.config/
-cp -r dotfiles/i3conf /home/$user_name/.config/i3
+cp -r dotfiles/i3-conf /home/$user_name/.config/i3
 rm .config/i3/MononokiNerdFontMono-Regular.ttf
 cp -r dotfiles/nvim /home/$user_name/.config/
 cp dotfiles/background /home/$user_name/Images/dragon-girl.jpg
