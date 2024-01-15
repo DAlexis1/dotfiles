@@ -1,119 +1,87 @@
 #!/bin/bash
 
-#nothing is working right now
-exit 0
-
-name_user=$1
-
-if [[ ! $# -eq 1 ]]; then
-	echo "Usage : $0 name_of_user"
-	exit 1
+if [[ "$USER" = "root" ]]; then
+	echo "Don't run this program as root it won't work"
+	exit 0
 fi
 
-pacman -Syu
+user=$USER
 
-pacman -S --needed unzip git
+# install every program needed
+echo "[*] Setting lightdm-slick-greeter configuration"
+sudo rm /etc/lightdm/lightdm.conf
+sudo cp /home/$user/dotfiles/lightgreeter-conf/lightdm.conf /etc/lightdm/
+sudo cp /home/$user/dotfiles/lightgreeter-conf/slick-greeter.conf /etc/lightdm/
+sudo mkdir /usr/share/backgrounds
+sudo cp /home/$user/dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
-cd /home/$user_name || exit 0
+echo "[*] Installing programs from main repo"
+sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter
 
-mkdir /home/$name_user/Scripts
-mkdir /home/$name_user/Images
-#copy to the right place the cloned files that we can already copy
-cp -r dotfiles/Scripts "/home/$name_user/"
-rm "/home/$name_user/Scripts/MononokiNerdFontMono-Regular.ttf"
-cp -r dotfiles/alacritty /home/$user_name/.config/
-cp -r dotfiles/i3-conf /home/$user_name/.config/i3
-rm "/home/$name_user/.config/i3/MononokiNerdFontMono-Regular.ttf"
-cp -r dotfiles/nvim /home/$user_name/.config/
-cp dotfiles/background "/home/${user_name}/Images/dragon-girl.jpg"
+echo "[*] Installing yay"
+git clone https://aur.archlinux.org/yay.git ~
+cd ~/yay || exit 0
+makepkg -siCc --noconfirm
 
-cd /home/$user_name || exit 0
-# get nerd-fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Mononoki.zip
-mkdir patched-fonts
-cp -r Mononoki.zip patched-fonts/Mononoki.zip
-cd /home/$user_name/patched-fonts || exit 0
+echo "[*] Installing programs from AUR"
+yay -S i3lock-color
+yay -S autotiling
+yay -S librewolf
+yay -S flameshot
+yay -S onlyoffice-bin
+
+# install nerd-fonts
+echo "[*] Get fonts-file"
+cd ~ || exit 0
+mkdir ~/patched-fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Mononoki.zip -P ~/patched-fonts/
+cd ~/patched-fonts || exit 0
 unzip Mononoki.zip
 rm README.md
 rm LICENSE.txt
 
-cd /home/$user_name || exit 0
-# copy in the location where i need the font
-cp MononokiNerdFontMono-Regular.ttf Scripts/
-cp MononokiNerdFontMono-Regular.ttf .config/i3/config
-
-cd /home/$user_name || exit 0
-# install nerd-fonts
+cd ~ || exit 0
+echo "[*] Get install script"
 wget https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh
 chmod +x install.sh
 ./install.sh
 
-cd /home/$user_name || exit 0
-# Install yay to install easily the packages
-pacman -S go
-git clone https://aur.archlinux.org/yay.git /home/$name_user/yay
-chown -R $name_user:$name_user /home/$name_user/yay
-cd /home/$name_user/yay || exit 0
-pacman -S --needed base-devel
-makepkg -si
-cd /home/$user_name || exit 0
-rm -rf yay
+echo "[*] Get oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-cd /home/$user_name || exit 0
+echo "[*] Get powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
-mkdir AppImage
+echo "[*] Setting zsh parameters"
+rm ~/.zshrc
+cp ~/dotfiles/.zshrc ~/.zshrc
 
-cd /home/$user_name || exit 0
+echo "[*] Creating necessary directories for my script"
+mkdir ~/Images
+mkdir ~/Scripts
+mkdir ~/AppImage
 
-#install things used by my bar scripts
-pacman -S zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh
+echo "[*] Copying files from github dotfiles"
+cp -R ~/dotfiles/Scripts ~/Scripts
+cp ~/dotfiles/background ~/Images/dragon-girl.jpg
+rm -rf .config/i3/
+cp -R ~/dotfiles/i3-conf ~/.config/i3
+cp -R ~/dotfiles/alacritty ~/.config/
+cp -R ~/dotfiles/nvim ~/.config/
 
-pacman -Rns i3lock
-pacman -S i3lock-color
-yay i3lock-color
-yay autotiling
+echo "[*] Installing nerd-fonts in Scripts and i3config"
+rm -rf ~/.config/i3/MononokiNerdFontMono-Regular.ttf
+cp ~/patched-fonts/MononokiNerdFontMono-Regular.ttf ~/.config/i3/
+rm -rf ~/Scripts/MononokiNerdFontMono-Regular.ttf
+cp ~/patched-fonts/MononokiNerdFontMono-Regular.ttf ~/Scripts/
 
-cd /home/$user_name || exit 0
-# installation zsh + theme powerlevel10k
-su -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"' $name_user
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$user_name/powerlevel10k
-
-rm /home/$user_name/.zshrc
-cp /home/$user_name/dotfiles/.zshrc .zshrc
-
-cd /home/$user_name || exit 0
-
-#install apps
-pacman -S alacritty keepass thunderbird firefox flameshot neovim
-yay librewolf
-yay flameshot
-yay onlyoffice-bin
-
-cd /home/$user_name || exit 0
-
-#add to Path
 echo "Do you want to add Scripts directory to PATH (Y/n) : "
 read -r AcceptScriptsPath
 # add Scripts directory to path
 if [[ "$AcceptScriptsPath" = "y" ]]; then
-	touch /etc/profile.d/env.sh
-	echo 'export PATH="$PATH:/home/'"${name_user}"'/Scripts"' >>/etc/profile.d/env.sh
+	sudo touch /etc/profile.d/env.sh
+	sudo echo 'export PATH="$PATH:/home/'"${user}"'/Scripts"' | sudo tee -a /etc/profile.d/env.sh
 fi
 
-cd /home/$user_name || exit 0
-
-# configure lightdm-slick-greeter
-pacman -S lightdm-slick-greeter
-
-rm /etc/lightdm/lightdm.conf
-cp dotfiles/lightgreeter-conf/lightdm.conf /etc/lightdm.conf
-cp dotfiles/lightgreeter-conf/slick-greeter.conf /etc/slick-greeter.conf
-mkdir /usr/share/backgrounds
-cp dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
-
-chown -R $name_user:$name_user /home/$name_user/.config
-chown -R $name_user:$name_user /home/$name_user/AppImage
-chown $name_user:$name_user /home/$name_user/.zshrc
-
-chown -R $name_user:$name_user /home/$name_user/Image
-chown -R $name_user:$name_user /home/$name_user/Scripts
+echo "[*] End of auto-settings"
+exit 0
