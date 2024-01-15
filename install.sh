@@ -11,18 +11,16 @@ pacman -S --needed unzip git
 
 cd /home/$user_name || exit 0
 
-git clone https://github.com/DAlexis1/dotfiles.git
-
 mkdir /home/$name_user/Scripts
 mkdir /home/$name_user/Images
 #copy to the right place the cloned files that we can already copy
 cp -r dotfiles/Scripts Scripts
-rm Scripts/MononokiNerdFontMono-Regular.ttf
+rm "/home/$name_user/Scripts/MononokiNerdFontMono-Regular.ttf"
 cp -r dotfiles/alacritty /home/$user_name/.config/
 cp -r dotfiles/i3-conf /home/$user_name/.config/i3
-rm .config/i3/MononokiNerdFontMono-Regular.ttf
+rm "/home/$name_user/.config/i3/MononokiNerdFontMono-Regular.ttf"
 cp -r dotfiles/nvim /home/$user_name/.config/
-cp dotfiles/background /home/$user_name/Images/dragon-girl.jpg
+cp dotfiles/background "/home/$user_name/Images/dragon-girl.jpg"
 
 cd /home/$user_name || exit 0
 # get nerd-fonts
