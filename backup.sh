@@ -21,12 +21,12 @@ rm .zshrc
 
 mkdir lightgreeter-conf
 # get every files needed
-cp Bureau/reinstall.sh install.sh
+cp ~/Bureau/reinstall.sh install.sh
 cp -r ~/.config/alacritty alacritty
 cp -r ~/.config/nvim nvim
 cp -r ~/.config/i3 i3-conf
 cp ~/.zshrc .zshrc
-cp Images/dragon-girl.jpg background
+cp ~/Images/dragon-girl.jpg background
 cp /etc/lightdm/lightdm.conf lightgreeter-conf/lightdm.conf
 cp /etc/lightdm/slick-greeter.conf lightgreeter-conf/slick-greeter.conf
 cp -r ~/Scripts Scripts
