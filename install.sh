@@ -16,13 +16,13 @@ cd /home/$user_name || exit 0
 mkdir /home/$name_user/Scripts
 mkdir /home/$name_user/Images
 #copy to the right place the cloned files that we can already copy
-cp -r dotfiles/Scripts Scripts
+cp -r dotfiles/Scripts "/home/$name_user/"
 rm "/home/$name_user/Scripts/MononokiNerdFontMono-Regular.ttf"
 cp -r dotfiles/alacritty /home/$user_name/.config/
 cp -r dotfiles/i3-conf /home/$user_name/.config/i3
 rm "/home/$name_user/.config/i3/MononokiNerdFontMono-Regular.ttf"
 cp -r dotfiles/nvim /home/$user_name/.config/
-cp dotfiles/background "/home/$user_name/Images/dragon-girl.jpg"
+cp dotfiles/background "/home/${user_name}/Images/dragon-girl.jpg"
 
 cd /home/$user_name || exit 0
 # get nerd-fonts
@@ -52,7 +52,7 @@ git clone https://aur.archlinux.org/yay.git /home/$name_user/yay
 chown -R $name_user:$name_user /home/$name_user/yay
 cd /home/$name_user/yay || exit 0
 pacman -S --needed base-devel
-su -c "makepkg -si" "$name_user"
+makepkg -si
 cd /home/$user_name || exit 0
 rm -rf yay
 
@@ -67,8 +67,8 @@ pacman -S zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr netwo
 
 pacman -Rns i3lock
 pacman -S i3lock-color
-su -c "yay i3lock-color" "$name_user"
-su -c "yay autotiling" "$name_user"
+yay i3lock-color
+yay autotiling
 
 cd /home/$user_name || exit 0
 # installation zsh + theme powerlevel10k
@@ -82,9 +82,9 @@ cd /home/$user_name || exit 0
 
 #install apps
 pacman -S alacritty keepass thunderbird firefox flameshot neovim
-su -c "yay librewolf" "$name_user"
-su -c "yay flameshot" "$name_user"
-su -c "yay onlyoffice-bin" "$name_user"
+yay librewolf
+yay flameshot
+yay onlyoffice-bin
 
 cd /home/$user_name || exit 0
 
