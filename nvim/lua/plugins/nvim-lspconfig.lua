@@ -75,8 +75,6 @@ local config = function()
 
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
-	-- local flake8 = require("efmls-configs.linters.flake8")
-	-- local black = require("efmls-configs.formatters.black")
 	local pylint = require("efmls-configs.linters.pylint")
 	local autopep8 = require("efmls-configs.formatters.autopep8")
 	local cpplint = require("efmls-configs.linters.cpplint")
