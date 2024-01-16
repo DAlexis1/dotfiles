@@ -16,7 +16,7 @@ sudo mkdir /usr/share/backgrounds
 sudo cp /home/$user/dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
 echo "[*] Installing programs from main repo"
-sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser
+sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio libpulse feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser
 
 echo "[*] Installing yay"
 git clone https://aur.archlinux.org/yay.git
@@ -68,7 +68,7 @@ echo "[*] Copying files from github dotfiles"
 cp -R ~/dotfiles/Scripts/* ~/Scripts/
 cp ~/dotfiles/background ~/Images/dragon-girl.jpg
 rm -rf .config/i3/
-cp -R ~/dotfiles/i3-conf ~/.config/i3
+cp -R ~/dotfiles/i3-conf ~/.config/i3/
 cp -R ~/dotfiles/alacritty ~/.config/
 cp -R ~/dotfiles/nvim ~/.config/
 
