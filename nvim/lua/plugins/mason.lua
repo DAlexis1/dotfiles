@@ -35,6 +35,7 @@ return {
 				"shfmt",
 				"stylua",
 			},
+			auto_update = true,
 		})
 	end,
 }

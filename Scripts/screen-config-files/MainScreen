@@ -1,3 +1,0 @@
-#!/bin/sh
-xrandr --output eDP --primary --mode "$(xrandr | grep primary | awk '{print $4}' | awk -F '+' '{print $1} ')" --pos 0x0 --rotate normal --output HDMI-A-0 --off --output DisplayPort-0 --off --output DisplayPort-1 --off
-wal -i ~/Images/dragon-girl.jpg >/dev/null
