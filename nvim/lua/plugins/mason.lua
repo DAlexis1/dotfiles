@@ -34,6 +34,7 @@ return {
 				"shellcheck",
 				"shfmt",
 				"stylua",
+
 			},
 			auto_update = true,
 		})
