@@ -16,7 +16,7 @@ sudo mkdir /usr/share/backgrounds
 sudo cp /home/$user/dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
 echo "[*] Installing programs from main repo"
-sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio libpulse feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser npm luarocks
+sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio libpulse feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser npm luarocks xclip xautolock
 
 echo "[*] Installing yay"
 cd ~ || exit 0

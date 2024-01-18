@@ -29,12 +29,12 @@ return {
 				"efm",
 				"lua-language-server",
 				"luacheck",
-				"pylint",
+				--"pylint", if needed we can put it but it's not really useful as it have some bugs with imports
+				"ruff",
 				"pyright",
 				"shellcheck",
 				"shfmt",
 				"stylua",
-
 			},
 			auto_update = true,
 		})
