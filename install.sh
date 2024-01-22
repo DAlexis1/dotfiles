@@ -15,6 +15,10 @@ sudo cp /home/$user/dotfiles/lightgreeter-conf/slick-greeter.conf /etc/lightdm/
 sudo mkdir /usr/share/backgrounds
 sudo cp /home/$user/dotfiles/background /usr/share/backgrounds/dragon-girl.jpg
 
+# Add ability to change brightess of the screen
+sudo touch /etc/udev/rules.d/backlight.rules
+echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp $user $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee -a "/etc/udev/rules.d/backlight.rules"
+
 echo "[*] Installing programs from main repo"
 sudo pacman -Rns i3-lock || sudo pacman -S --needed git unzip base-devel go zenity xorg-xinput raylib acpi xorg-xwininfo xdotool xorg-xrandr networkmanager pulseaudio libpulse feh picom python-pywal zsh alacritty keepass thunderbird firefox flameshot neovim lightdm-slick-greeter qutebrowser npm luarocks xclip xautolock xss-lock
 
