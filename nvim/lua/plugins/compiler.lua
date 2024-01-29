@@ -3,7 +3,7 @@ return {
 		"Zeioth/compiler.nvim",
 		lazy = false,
 		cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-		dependencies = { "stevearc/overseer.nvim" },
+		dependencies = { "stevearc/overseer.nvim"},
 		opts = {},
 	},
 	{ -- The task runner we use

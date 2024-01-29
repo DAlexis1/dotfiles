@@ -110,7 +110,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias myfetch="fastfetch --color-keys red --logo-color-1 yellow --logo-color-2 green --color-title green --percent-type 1 --file Images/fastfetch-logo"
 alias discord="~/App/Discord >/dev/null"
 
 unset HISTFILE
