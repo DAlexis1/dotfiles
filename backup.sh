@@ -18,6 +18,7 @@ rm -rf i3-conf
 rm -rf Scripts
 rm .zshrc
 rm neofetch_config
+rm tmux_conf
 
 mkdir lightgreeter-conf
 # get every files needed
@@ -31,6 +32,7 @@ cp /etc/lightdm/lightdm.conf lightgreeter-conf/lightdm.conf
 cp /etc/lightdm/slick-greeter.conf lightgreeter-conf/slick-greeter.conf
 cp -r ~/Scripts Scripts
 cp ~/.config/neofetch/config.conf neofetch_config
+cp ~/.tmux.conf tmux_conf
 
 # Check git status
 gs="$(git status | grep -i "modified")"
