@@ -1,25 +1,32 @@
 #!/bin/bash
 
-BAT=$(acpi -b | awk '{print $4}')
-BAT=${BAT%,}
+# BAT=$(acpi -b | awk '{print $4}')
+# BAT=${BAT%,}
+
+BAT=0
+for i in $(ls /sys/class/power_supply | grep -iwv AC); do
+	BAT=$((BAT + $(cat /sys/class/power_supply/"${i}"/capacity)))
+done
+BAT="${BAT}%"
+
+status=$(ls /sys/class/power_supply | grep -iwv AC | awk '{print $1}')
+status=$(cat "/sys/class/power_supply/${status}/status")
 
 # Full and short texts
-if [[ $(acpi -b | awk '{print $3}') = "Full," ]]; then
+if [[ "${status}" = "Full" ]]; then
 	echo "Full"
 	echo "Full"
-elif [[ $(acpi -b | awk '{print $3}') = "Discharging," ]]; then
+elif [[ "${status}" = "Discharging" ]]; then
 	echo "  $BAT"
 	echo "  $BAT"
-elif [[ $(acpi -b | awk '{print $3}') = "Not" ]]; then
-	# when charging the output for the state of the battery may be bugged and be two words so we need to move it
-	BAT=$(acpi -b | awk '{print $5}')
-	echo "󱊦 $BAT"
-	echo "󱊦 $BAT"
-elif [[ $(acpi -b | awk '{print $3}') = "Charging," ]]; then
+elif [[ "${status}" = "Not" ]]; then
 	# when charging the output for the state of the battery may be bugged and be two words so we need to move it
 	echo "󱊦 $BAT"
 	echo "󱊦 $BAT"
-
+elif [[ "${status}" = "Charging" ]]; then
+	# when charging the output for the state of the battery may be bugged and be two words so we need to move it
+	echo "󱊦 $BAT"
+	echo "󱊦 $BAT"
 fi
 
 #Set orange color below 5% or use orange below 20%
