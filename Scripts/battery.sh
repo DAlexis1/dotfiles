@@ -3,14 +3,9 @@
 # BAT=$(acpi -b | awk '{print $4}')
 # BAT=${BAT%,}
 
-BAT=0
-for i in $(ls /sys/class/power_supply | grep -iwv AC); do
-	BAT=$((BAT + $(cat /sys/class/power_supply/"${i}"/capacity)))
-done
-BAT="${BAT}%"
+BAT="$(cat /sys/class/power_supply/BAT0/capacity)%"
 
-status=$(ls /sys/class/power_supply | grep -iwv AC | awk '{print $1}')
-status=$(cat "/sys/class/power_supply/${status}/status")
+status=$(cat "/sys/class/power_supply/BAT0/status")
 
 # Full and short texts
 if [[ "${status}" = "Full" ]]; then

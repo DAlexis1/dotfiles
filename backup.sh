@@ -19,6 +19,7 @@ rm -rf Scripts
 rm .zshrc
 rm neofetch_config
 rm tmux_conf
+rm picom_conf
 
 mkdir lightgreeter-conf
 # get every files needed
@@ -33,6 +34,7 @@ cp /etc/lightdm/slick-greeter.conf lightgreeter-conf/slick-greeter.conf
 cp -r ~/Scripts Scripts
 cp ~/.config/neofetch/config.conf neofetch_config
 cp ~/.tmux.conf tmux_conf
+cp /etc/xdg/picom.conf picom_conf
 
 # Check git status
 gs="$(git status | grep -i "modified")"

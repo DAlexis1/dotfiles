@@ -196,10 +196,10 @@ bindsym $mod+Ctrl+w exec "qutebrowser"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #status_command i3status -c ~/.config/i3/i3status.conf
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        #mode hide
-        #hidden_state hide
+        #status_command i3status -c ~/.config/i3/i3status.conf
+        # mode hide
+        # hidden_state hide
         tray_output none
         workspace_buttons yes
         strip_workspace_numbers yes
@@ -238,4 +238,6 @@ assign [class="thunderbird"] 4:
 
 workspace $ws9 output HDMI-A-0
 
-exec --no-startup-id pulseaudio --start
+#exec_always --no-startup-id pulseaudio --start
+#exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
+exec --no-startup-id xset -dpms
