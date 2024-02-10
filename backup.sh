@@ -20,6 +20,7 @@ rm .zshrc
 rm neofetch_config
 rm tmux_conf
 rm picom_conf
+rm -rf pacman-hooks
 
 mkdir lightgreeter-conf
 # get every files needed
@@ -35,6 +36,7 @@ cp -r ~/Scripts Scripts
 cp ~/.config/neofetch/config.conf neofetch_config
 cp ~/.tmux.conf tmux_conf
 cp /etc/xdg/picom.conf picom_conf
+cp -r /etc/pacman.d/hooks pacman-hooks
 
 # Check git status
 gs="$(git status | grep -i "modified")"

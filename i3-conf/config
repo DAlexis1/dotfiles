@@ -217,7 +217,7 @@ exec --no-startup-id "wal -i ~/Images/dragon-girl.jpg"
 exec --no-startup-id invert_touch
 
 # remove decorations of all windows
-for_window [class=".*"] border pixel 1 
+for_window [class=".*"] border pixel 0 
 
 gaps outer 0
 gaps inner 5

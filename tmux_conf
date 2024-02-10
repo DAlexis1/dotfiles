@@ -1,3 +1,5 @@
 set -g mouse on
 set -g status off
 set -s set-clipboard external
+
+

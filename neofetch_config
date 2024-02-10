@@ -12,13 +12,14 @@ print_info() {
 
     info "[Shell]" shell
     info "[WM]" wm
-    #info "[Theme]" theme
+    #info "[Theme theme
     info " " term
     #info "[Terminal Font]" term_font
     info "[Packages]" packages
 
-    prin "$(color 7) --------------------"
+    info "Battery" battery
 
+    prin "$(color 7) --------------------"
     #info "[Resolution]" resolution
     #info "[CPU]" cpu
     #info "[GPU]" gpu
@@ -31,7 +32,6 @@ print_info() {
     # info "GPU Driver" gpu_driver  # Linux/macOS only
     # info "CPU Usage" cpu_usage
     # info "Disk" disk
-    # info "Battery" battery
     # info "Font" font
     # info "Song" song
     # [[ "$player" ]] && prin "Music Player" "$player"
