@@ -40,6 +40,7 @@ cp ~/.tmux.conf tmux_conf
 cp /etc/xdg/picom.conf picom_conf
 cp -r /etc/pacman.d/hooks pacman-hooks
 cp -r ~/dwm/* dwm/
+gzip -r dwm
 gunzip -r dwm
 # Check git status
 gs="$(git status | grep -i "modified")"
