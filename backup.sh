@@ -23,6 +23,7 @@ rm picom_conf
 rm -rf pacman-hooks
 rm -rf dwm
 
+mkdir dwm
 mkdir lightgreeter-conf
 # get every files needed
 cp ~/Bureau/reinstall.sh install.sh
@@ -38,8 +39,7 @@ cp ~/.config/neofetch/config.conf neofetch_config
 cp ~/.tmux.conf tmux_conf
 cp /etc/xdg/picom.conf picom_conf
 cp -r /etc/pacman.d/hooks pacman-hooks
-cp -r ~/dwm dwm
-
+cp -r ~/dwm/* dwm/
 
 # Check git status
 gs="$(git status | grep -i "modified")"
