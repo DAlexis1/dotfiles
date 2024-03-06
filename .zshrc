@@ -110,7 +110,10 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias discord="~/App/Discord >/dev/null"
+# alias discord="~/App/Discord >/dev/null"
+alias sdwm="startx /usr/local/bin/dwm"
+alias si3="startx /bin/i3"
+alias vsc="sudo clamscan / --recursive > ~/log_vir/$(date +'%d-%m-%Y_%H:%M:%S').log "
 
 unset HISTFILE
 unset HISTSIZE
@@ -122,6 +125,3 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 neofetch
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"

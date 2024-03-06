@@ -25,3 +25,6 @@ keymap.set("n", "<A-k>", ":move .-2<CR>")
 keymap.set("x", "<A-j>", ":move '>+1<CR>gv")
 keymap.set("x", "<A-k>", ":move '<-2<CR>gv")
 
+-- Using vim as terminal
+keymap.set("n", "<leader>t", ":split<CR>:term<CR>")
+keymap.set("t", "<Esc>", "<C-\\><C-n>")

@@ -29,13 +29,15 @@ return {
 				"efm",
 				"lua-language-server",
 				"luacheck",
+				"texlab",
+				"vale",
 				--"pylint", if needed we can put it but it's not really useful as it have some bugs with imports
 				"ruff",
 				"pyright",
 				"shellcheck",
 				"shfmt",
 				"stylua",
-        "rust-analyzer",
+				"rust-analyzer",
 			},
 			auto_update = true,
 		})

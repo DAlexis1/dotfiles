@@ -55,7 +55,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec alacritty 
-bindsym $mod+Return exec st tmux 
+bindsym $mod+Return exec "st"
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -189,7 +189,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Ctrl+d exec "Discord"
+bindsym $mod+Ctrl+d exec discord
 bindsym $mod+Ctrl+y exec "freetube"
 bindsym $mod+Ctrl+w exec "qutebrowser"
 
