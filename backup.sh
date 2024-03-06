@@ -13,18 +13,15 @@ rm install.sh
 rm -rf nvim
 rm -rf alacritty
 rm background
-rm -rf lightgreeter-conf
 rm -rf i3-conf
 rm -rf Scripts
 rm .zshrc
 rm neofetch_config
-rm tmux_conf
 rm picom_conf
 rm -rf pacman-hooks
 rm -rf dwm
 
 mkdir dwm
-mkdir lightgreeter-conf
 # get every files needed
 cp ~/Bureau/reinstall.sh install.sh
 cp -r ~/.config/alacritty alacritty
@@ -32,11 +29,8 @@ cp -r ~/.config/nvim nvim
 cp -r ~/.config/i3 i3-conf
 cp ~/.zshrc .zshrc
 cp ~/Images/dragon-girl.jpg background
-cp /etc/lightdm/lightdm.conf lightgreeter-conf/lightdm.conf
-cp /etc/lightdm/slick-greeter.conf lightgreeter-conf/slick-greeter.conf
 cp -r ~/Scripts Scripts
 cp ~/.config/neofetch/config.conf neofetch_config
-cp ~/.tmux.conf tmux_conf
 cp /etc/xdg/picom.conf picom_conf
 cp -r /etc/pacman.d/hooks pacman-hooks
 cp -r ~/dwm/* dwm/
