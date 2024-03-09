@@ -13,7 +13,7 @@ local config = function()
 		},
 		pickers = {
 			find_files = {
-				theme = "dropdown",
+				theme = "ivy",
 				previewer = true,
 				hidden = true,
 			},
@@ -22,7 +22,7 @@ local config = function()
 				previewer = true,
 			},
 			buffers = {
-				theme = "dropdown",
+				theme = "ivy",
 				previewer = false,
 			},
 		},

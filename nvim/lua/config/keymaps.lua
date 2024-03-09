@@ -28,3 +28,13 @@ keymap.set("x", "<A-k>", ":move '<-2<CR>gv")
 -- Using vim as terminal
 keymap.set("n", "<leader>t", ":split<CR>:term<CR>")
 keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- Snippets moving
+keymap.set("i", "<C-l>", function()
+	local ls = require("luasnip")
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end)
+
+

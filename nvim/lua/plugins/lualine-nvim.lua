@@ -1,24 +1,21 @@
 local config = function()
-	local theme = require("lualine.themes.gruvbox")
+	local theme = require("lualine.themes.moonfly")
 
 	-- set bg transparency in all modes
-	theme.normal.c.bg = nil
-	theme.insert.c.bg = nil
-	theme.visual.c.bg = nil
-	theme.replace.c.bg = nil
-	theme.command.c.bg = nil
+	-- theme.normal.c.bg = nil
+	-- theme.insert.c.bg = nil
+	-- theme.visual.c.bg = nil
+	-- theme.replace.c.bg = nil
+	-- theme.command.c.bg = nil
 
 	require("lualine").setup({
 		options = {
 			theme = theme,
 			globalstatus = true,
 		},
-		tabline = {
-			lualine_a = { "buffers", "diagnostics", "branch", "diff" },
-		},
 		sections = {
 			lualine_a = { "mode" },
-			lualine_b = {},
+			lualine_b = { "diagnostics", "branch", "diff" },
 			lualine_c = {},
 			lualine_x = { "encoding", "fileformat", "filetype" },
 			lualine_y = { "progress" },

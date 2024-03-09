@@ -1,11 +1,25 @@
 return {
 	"hrsh7th/nvim-cmp",
+	dependencies = {
+		"onsails/lspkind.nvim",
+		"saadparwaiz1/cmp_luasnip",
+		{
+			"L3MON4D3/LuaSnip",
+			dependencies = {
+				"rafamadriz/friendly-snippets",
+			},
+			-- follow latest release.
+			version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+			-- install jsregexp (optional!).
+			build = "make install_jsregexp",
+		},
+	},
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 
-		require("luasnip/loaders/from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		vim.opt.completeopt = "menu,menuone,noselect"
 
@@ -40,15 +54,4 @@ return {
 			},
 		})
 	end,
-	dependencies = {
-		"onsails/lspkind.nvim",
-		{
-
-			"L3MON4D3/LuaSnip",
-			-- follow latest release.
-			version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-			-- install jsregexp (optional!).
-			build = "make install_jsregexp",
-		},
-	},
 }

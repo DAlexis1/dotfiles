@@ -117,7 +117,7 @@ local config = function()
 				cpp = { clangformat, clang_tidy },
 				sh = { shfmt, shellcheck },
 				tex = { vale },
-        latex = {vale},
+				latex = { vale },
 			},
 		},
 	})

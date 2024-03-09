@@ -37,7 +37,7 @@ return {
 				"shellcheck",
 				"shfmt",
 				"stylua",
-				"rust-analyzer",
+				-- "rust-analyzer", to reset if needed
 			},
 			auto_update = true,
 		})
